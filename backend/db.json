@@ -1,0 +1,13 @@
+{
+  "appointments": [
+    {
+      "id": "a6f8",
+      "fullName": "Rohit Verma",
+      "email": "rohitv1797@gmail.com",
+      "phoneNumber": "9999999999",
+      "service": "Specialist Consultation",
+      "appointmentDate": "2026-01-31",
+      "notes": "Consult Doctor!!"
+    }
+  ]
+}

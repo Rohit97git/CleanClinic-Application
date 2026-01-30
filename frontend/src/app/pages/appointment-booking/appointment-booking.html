@@ -1,0 +1,88 @@
+<main class="px-4 py-12">
+  <section class="mx-auto max-w-3xl rounded-2xl bg-white p-6 shadow-sm md:p-10">
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl font-bold text-slate-800">Book an Appointment</h1>
+      <p class="mt-2 text-slate-600">
+        Fill out the form below and our team will get back to you shortly.
+      </p>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-6">
+      <!-- Name -->
+      <div>
+        <label class="block text-sm font-medium text-slate-700">Full Name</label>
+        <input
+          formControlName="fullName"
+          type="text"
+          placeholder="Enter Your Full Name"
+          class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+        />
+      </div>
+
+      <!-- Email + Phone -->
+      <div class="grid gap-6 md:grid-cols-2">
+        <div>
+          <label class="block text-sm font-medium text-slate-700"> Email Address </label>
+          <input
+            formControlName="email"
+            type="email"
+            placeholder="john@example.com"
+            class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700"> Phone Number </label>
+          <input
+            formControlName="phoneNumber"
+            type="tel"
+            placeholder="+1 234 567 890"
+            class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+          />
+        </div>
+      </div>
+
+      <!-- Service + Date -->
+      <!-- Service + Date -->
+      <div class="grid gap-6 md:grid-cols-2">
+        <div>
+          <label class="block text-sm font-medium text-slate-700"> Select Service </label>
+          <select
+            formControlName="service"
+            class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+          >
+            <option>Primary Care</option>
+            <option>Diagnostics</option>
+            <option>Specialist Consultation</option>
+            <option>Preventive Care</option>
+          </select>
+        </div>
+
+        <input
+          formControlName="appointmentDate"
+          type="date"
+          class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+        />
+      </div>
+
+      <!-- Notes -->
+      <div>
+        <label class="block text-sm font-medium text-slate-700"> Additional Notes </label>
+        <textarea
+          formControlName="notes"
+          rows="4"
+          placeholder="Any specific concerns or requests..."
+          class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+        ></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="w-full rounded-xl bg-slate-800 py-3 text-white">
+        Submit Appointment Request
+      </button>
+
+      <p *ngIf="successMsg" class="text-green-600 text-center">
+        {{ successMsg }}
+      </p>
+    </form>
+  </section>
+</main>
