@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuardGuard } from './guards/auth-guard-guard';
+import { adminGuard } from './guards/admin-guard';
 
 export const routes: Routes = [
   {
@@ -13,17 +15,22 @@ export const routes: Routes = [
   },
 
   {
-    path: 'about',
-    loadComponent: () => import('./pages/about/about').then((m) => m.About),
+    path: 'historydata',
+    canActivate: [authGuardGuard],
+    loadComponent: () =>
+      import('./pages/appointment-history/appointment-history').then((m) => m.AppointmentHistory),
   },
 
   {
-    path: 'contact',
-    loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
+    path: 'admin/appointments',
+    canActivate: [adminGuard],
+    loadComponent: () =>
+      import('./pages/admin-dashboard/admin-dashboard').then((m) => m.AdminDashboard),
   },
 
   {
     path: '**',
+    loadComponent: () => import('./pages/wildcard/wildcard').then((m) => m.Wildcard),
     redirectTo: '',
   },
 ];

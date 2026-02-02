@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { AppointmentModel } from '../models/appointmentForm';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,14 @@ export class AppointmentServices {
   }
 
   addAppointment(data: AppointmentModel) {
-    return this.http.post<AppointmentModel>(`${this.baseUrl}/appointments`, data);
+    return this.http
+      .post<AppointmentModel>(`${this.baseUrl}/appointments`, data)
+      .pipe(tap(() => this.loadAppointments()));
+  }
+
+  deleteAppointment(id?: number) {
+    return this.http
+      .delete(`${this.baseUrl}/appointments/${id}`)
+      .pipe(tap(() => this.loadAppointments()));
   }
 }

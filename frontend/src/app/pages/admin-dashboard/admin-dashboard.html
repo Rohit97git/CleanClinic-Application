@@ -1,0 +1,24 @@
+<main class="px-6 py-12">
+  <section class="mx-auto max-w-6xl">
+    <h1 class="mb-8 text-3xl font-bold">Admin Appointment manager</h1>
+
+    <div class="space-y-4">
+      <div *ngFor="let a of appointments" class="rounded-xl border bg-white p-5 shadow-sm">
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="font-semibold">{{ a.fullName }}</p>
+            <p class="text-sm text-slate-600">{{ a.service }}</p>
+            <p class="text-sm text-slate-600">{{ a.appointmentDate }}</p>
+          </div>
+
+          <button
+            (click)="deleteAppointment(a.id)"
+            class="rounded-lg bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
